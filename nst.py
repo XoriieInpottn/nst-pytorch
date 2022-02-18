@@ -204,6 +204,7 @@ def main():
             image = ImageNet.decode_image(model.opt_image.detach().to('cpu').numpy()[0])
             path = os.path.join(args.output_dir, f'{i + 1:08d}.jpg')
             save_image(path, image, oh, ow)
+    print('complete')
     return 0
 
 
