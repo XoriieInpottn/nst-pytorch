@@ -106,8 +106,8 @@ class NST(nn.Module):
 
         self.opt_image = nn.Parameter(content_image.clone())
 
-        self.content_layers = [9]
-        self.style_layers = [0, 2, 4, 8, 12]
+        self.content_layers = [9, 13]
+        self.style_layers = [0, 2, 4, 8, 12, 15]
 
         self.content_targets = self.backbone(content_image)
         self.content_targets = [self.content_targets[i].detach() for i in self.content_layers]
@@ -149,7 +149,7 @@ def main():
     parser.add_argument('--style-image', '-s', required=True)
     parser.add_argument('--output-dir', '-o', required=True)
     parser.add_argument('--save-interval', type=int, default=100)
-    parser.add_argument('--content-weight', type=float, default=1e-1)
+    parser.add_argument('--content-weight', type=float, default=1e1)
     parser.add_argument('--style-weight', type=float, default=1e4)
     parser.add_argument('--image-size', type=int, default=640)
     parser.add_argument('--lr', type=float, default=1.2e-2)
