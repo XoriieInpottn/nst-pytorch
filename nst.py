@@ -15,7 +15,7 @@ import numpy as np
 import torch
 from torch import nn
 from torch.nn import functional as F
-from torchcommon.optim import AdamX
+from torch.optim import AdamW
 from torchvision.models import vgg19
 from tqdm import tqdm
 
@@ -182,7 +182,7 @@ def main():
     ).to(device)
     print('neural style transfer model initialized')
 
-    optimizer = AdamX(
+    optimizer = AdamW(
         list(model.parameters()),
         lr=args.lr,
         betas=(args.momentum, 0.999),
